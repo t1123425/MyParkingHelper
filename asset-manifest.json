@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.a81aa91f.css",
-    "main.js": "/static/js/main.72016ed9.js",
-    "service-worker.js": "/service-worker.js",
-    "static/media/parkingLogo.svg": "/static/media/parkingLogo.b50ee5b29ca438e5356d73f6d26ef3c9.svg",
-    "static/media/parkingMark.svg": "/static/media/parkingMark.ca35ca913b0300ceea3a6a9c24826330.svg",
-    "index.html": "/index.html",
-    "main.a81aa91f.css.map": "/static/css/main.a81aa91f.css.map",
-    "main.72016ed9.js.map": "/static/js/main.72016ed9.js.map"
+    "main.css": "/MyParkingHelper/static/css/main.a81aa91f.css",
+    "main.js": "/MyParkingHelper/static/js/main.355c8466.js",
+    "service-worker.js": "/MyParkingHelper/service-worker.js",
+    "static/media/parkingLogo.svg": "/MyParkingHelper/static/media/parkingLogo.b50ee5b29ca438e5356d73f6d26ef3c9.svg",
+    "static/media/parkingMark.svg": "/MyParkingHelper/static/media/parkingMark.ca35ca913b0300ceea3a6a9c24826330.svg",
+    "index.html": "/MyParkingHelper/index.html",
+    "main.a81aa91f.css.map": "/MyParkingHelper/static/css/main.a81aa91f.css.map",
+    "main.355c8466.js.map": "/MyParkingHelper/static/js/main.355c8466.js.map"
   },
   "entrypoints": [
     "static/css/main.a81aa91f.css",
-    "static/js/main.72016ed9.js"
+    "static/js/main.355c8466.js"
   ]
 }

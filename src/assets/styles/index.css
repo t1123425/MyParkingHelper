@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.headerContent{
+    max-height: 104px;
+    z-index: 1500;
+}
+.addParkBtnWrap{
+    position: absolute;
+    z-index: 1500;
+    left:0;
+    right:0;
+    bottom: 100px;
+    margin: auto;
+}
+.navMenu{
+    left: -5000px;
+}
+.navMenu.active{
+    left: 0;
+}
+/* .mainContent{
+    padding-top: 104px;
+} */

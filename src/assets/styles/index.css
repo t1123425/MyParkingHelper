@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 .headerContent{
-    max-height: 104px;
+    max-height: 80px;
     z-index: 1500;
 }
 .addParkBtnWrap{

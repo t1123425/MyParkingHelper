@@ -61,7 +61,7 @@ const Map = React.memo(({posArray = defaultprops})=>{
         },[])
         return (
             <div className="w-full h-full">
-                <MapContainer center={posArray} zoom={13} scrollWheelZoom={false} zoomControl={false} style={{height: '100vh'}}>
+                <MapContainer center={posArray} zoom={13} scrollWheelZoom={true} zoomControl={false} style={{height: '100vh'}}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

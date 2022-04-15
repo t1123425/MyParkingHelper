@@ -39,7 +39,7 @@ const LocationMarker = props => {
           geoWatch.current = navigator.geolocation.watchPosition( (position)=>{
             const currentPos = [position.coords.latitude,position.coords.longitude];
             if(!autoFly.current){
-              uMap.flyTo(currentPos);
+              uMap.flyTo(currentPos,17);
               autoFly.current = true;
             }
             //console.log('currentPos',currentPos);

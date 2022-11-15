@@ -1,7 +1,8 @@
 import React,{useState,useEffect,useRef} from 'react';
 import {Marker,Popup,useMap} from 'react-leaflet'
-import {showErrorAlert} from '../../../util/sweetAlert'
-
+//import {showErrorAlert} from '../../../util/sweetAlert'
+// import { useDispatch} from 'react-redux';
+// import { updateLocation } from '../../../services/actions';
 
 const positionError = ( error ) => {
   switch ( error.code ) { 
@@ -29,18 +30,20 @@ const positionError = ( error ) => {
 }
 
 const LocationMarker = props => {
-    const [position, setPosition] = useState(null)
+    const [position, setPosition] = useState(null);
+    //const dispatch = useDispatch();
     const uMap = useMap();
     let geoWatch = useRef(null);
     let autoFly = useRef(false);
     useEffect(()=>{
        if(!geoWatch.current){
          if("geolocation" in navigator && "watchPosition" in navigator.geolocation){
-          geoWatch.current = navigator.geolocation.watchPosition( (position)=>{
-            const currentPos = [position.coords.latitude,position.coords.longitude];
+          geoWatch.current = navigator.geolocation.watchPosition( (pos)=>{
+            const currentPos = [pos.coords.latitude,pos.coords.longitude];
             if(!autoFly.current){
               uMap.flyTo(currentPos,17);
               autoFly.current = true;
+              //dispatch(updateLocation(currentPos));
             }
             //console.log('currentPos',currentPos);
             setPosition(currentPos);
@@ -67,15 +70,17 @@ const LocationMarker = props => {
     //       showErrorAlert('location Error');
 
     //     })
-    // },[uMap])
-
-    return position === null?null:(
+      // },[uMap])
+    //  const test = ()=>{
+    //   console.log('hello');
+    // }
+    return position?(
       <Marker position={position}>
          <Popup>
            <p>Here is Your positon</p>
          </Popup>
       </Marker>
-   )
+   ):null
 }
 
 export default LocationMarker;

@@ -5,6 +5,13 @@ export const updateCarParkMarks = markArrays => {
     }
 }
 
+export const updateLocation = location => {
+    return {
+        type:'UPDATE_LOCATION',
+        currentLocation:location
+    }
+}
+
 export const saveParkMarks = markArrays => {
     return {
         type:'SAVE_PARKMARKS',

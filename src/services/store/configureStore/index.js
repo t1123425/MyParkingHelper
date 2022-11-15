@@ -11,7 +11,7 @@ const persistConfig = {
   const persistedReducer = persistReducer(persistConfig, allreducers)
 
   const exportStore = () => {
-    let store = createStore(persistedReducer)
+    let store = createStore(persistedReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__())
     let persistor = persistStore(store)
     return { store, persistor }
   }

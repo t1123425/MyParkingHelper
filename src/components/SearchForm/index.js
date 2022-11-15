@@ -51,9 +51,6 @@ const SearchForm = ()=>{
             showErrorAlert('car park api error');
         })
     }
-    // useEffect(()=>{
-    //     console.log('selectValue',selectValue);
-    // },[selectValue])
     
     return (
         <div className="formBlock bg-slate-100 rounded p-3">

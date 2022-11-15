@@ -1,8 +1,8 @@
-import React,{useState,useEffect,useRef} from 'react';
+import React,{useEffect,useRef} from 'react';
 import {Marker,Popup,useMap} from 'react-leaflet'
 //import {showErrorAlert} from '../../../util/sweetAlert'
-// import { useDispatch} from 'react-redux';
-// import { updateLocation } from '../../../services/actions';
+import { useDispatch,useSelector} from 'react-redux';
+import { updateLocation } from '../../../services/actions';
 
 const positionError = ( error ) => {
   switch ( error.code ) { 
@@ -30,8 +30,8 @@ const positionError = ( error ) => {
 }
 
 const LocationMarker = props => {
-    const [position, setPosition] = useState(null);
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const locationPosition = useSelector((state) => state.LocationReducer.currentLocation)
     const uMap = useMap();
     let geoWatch = useRef(null);
     let autoFly = useRef(false);
@@ -43,10 +43,8 @@ const LocationMarker = props => {
             if(!autoFly.current){
               uMap.flyTo(currentPos,17);
               autoFly.current = true;
-              //dispatch(updateLocation(currentPos));
             }
-            //console.log('currentPos',currentPos);
-            setPosition(currentPos);
+            dispatch(updateLocation(currentPos));
           }, positionError, { 
                   enableHighAccuracy: false, timeout: 15000, maximumAge: 0 
               }); 
@@ -74,8 +72,8 @@ const LocationMarker = props => {
     //  const test = ()=>{
     //   console.log('hello');
     // }
-    return position?(
-      <Marker position={position}>
+    return locationPosition.length > 0?(
+      <Marker position={locationPosition}>
          <Popup>
            <p>Here is Your positon</p>
          </Popup>

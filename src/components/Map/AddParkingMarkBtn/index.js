@@ -11,28 +11,19 @@ const ParkingMarkBtn = () => {
     const dispatch = useDispatch();
     const addressPovider =  new OpenStreetMapProvider();
     const savedMarkArray = useSelector((state) => state.CarParkReducer.saveParkMarks)
-    function saveLocation(){
+    const locationPosition = useSelector((state) => state.LocationReducer.currentLocation)
+    async function saveLocation(){
       let savePosMarks = [];
-      // if(currentLocation.length > 0){
-      //   savePosMarks.push({
-      //     posArray:currentLocation,
-      //     info:'Your parking space'
-      //   });
-      //   dispatch(saveParkMarks(savePosMarks));
-      // }else{
-        
-      // }
-      uMap.locate().on('locationfound',async (e)=>{
-        const results = await addressPovider.search({ query:''+e.latlng.lat+','+e.latlng.lng });
-          savePosMarks.push({
-            posArray:[e.latlng.lat,e.latlng.lng],
-            info:results[0].label
-          })
-          dispatch(saveParkMarks(savePosMarks))
-      }).on('locationerror',(err)=>{
-         console.log('err',err);
-         showErrorAlert('location Error')
-      })
+      if(locationPosition.length > 0){
+        const results = await addressPovider.search({ query:''+locationPosition[0]+','+locationPosition[1] });
+        savePosMarks.push({
+          posArray:locationPosition,
+          info:results[0].label
+        });
+        dispatch(saveParkMarks(savePosMarks));
+      }else{
+        showErrorAlert('No location')
+      }
       
     }
     function focusMarkLocation(){

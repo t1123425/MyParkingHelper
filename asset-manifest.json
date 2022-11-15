@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/MyParkingHelper/static/css/main.f4657d39.css",
-    "main.js": "/MyParkingHelper/static/js/main.5e7f1bd1.js",
+    "main.js": "/MyParkingHelper/static/js/main.c5409a96.js",
     "service-worker.js": "/MyParkingHelper/service-worker.js",
     "static/media/parkingLogo.svg": "/MyParkingHelper/static/media/parkingLogo.d963d7d37b7a8dc10d28449160a6051f.svg",
     "static/media/parkingMark.svg": "/MyParkingHelper/static/media/parkingMark.6067ab22484fe8a638fb6e375754436f.svg",
     "index.html": "/MyParkingHelper/index.html",
     "main.f4657d39.css.map": "/MyParkingHelper/static/css/main.f4657d39.css.map",
-    "main.5e7f1bd1.js.map": "/MyParkingHelper/static/js/main.5e7f1bd1.js.map"
+    "main.c5409a96.js.map": "/MyParkingHelper/static/js/main.c5409a96.js.map"
   },
   "entrypoints": [
     "static/css/main.f4657d39.css",
-    "static/js/main.5e7f1bd1.js"
+    "static/js/main.c5409a96.js"
   ]
 }

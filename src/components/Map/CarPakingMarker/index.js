@@ -22,7 +22,9 @@ const CarParkingMarker = props => {
                 <p>{e.FareDescription}</p>
                 <a href={`https://www.google.com/maps/search/?api=1&query=${e.posArray[0]}%2C${e.posArray[1]}`}
                 target="_blank" rel="noreferrer">
-                   Open google Map For directing.
+                   {
+                    props.mapMsg
+                   }
                 </a>
               </Popup>
           </Marker>

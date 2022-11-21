@@ -1,7 +1,6 @@
 import {Marker,Popup} from 'react-leaflet'
 import L from 'leaflet';
 import parkSVG from '../../../assets/img/parkingMark.svg'
-
 function getCutstomIcon(_iconSize){
   return L.icon({
     iconUrl:parkSVG,
@@ -19,7 +18,9 @@ const ParkingMarker = props => {
                 <p>{e.info}</p>
                 <a href={`https://www.google.com/maps/search/?api=1&query=${e.posArray[0]}%2C${e.posArray[1]}`}
                 target="_blank" rel="noreferrer">
-                   Open google Map For directing.
+                   {
+                    props.mapMsg
+                   }
                 </a>
               </Popup>
           </Marker>

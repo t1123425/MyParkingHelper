@@ -5,8 +5,10 @@ import {showErrorAlert} from '../../../util/sweetAlert';
 import {LocationMarkerIcon,RefreshIcon} from '@heroicons/react/solid';
 import { saveParkMarks, resetParkMarks } from '../../../services/actions';
 import CButton from '../../CButton';
+import { useTranslation } from 'react-i18next';
 
 const ParkingMarkBtn = () => {
+    const {t} = useTranslation();
     const uMap = useMap();
     const dispatch = useDispatch();
     const addressPovider =  new OpenStreetMapProvider();
@@ -22,7 +24,7 @@ const ParkingMarkBtn = () => {
         });
         dispatch(saveParkMarks(savePosMarks));
       }else{
-        showErrorAlert('No location')
+        showErrorAlert(t('NoLocation'))
       }
       
     }
@@ -37,20 +39,23 @@ const ParkingMarkBtn = () => {
     const renderBtn = () => {
         if(savedMarkArray.length > 0){
             return ( 
-               <div className='flex flex-col'>
-                  <CButton text={'Focus parking mark'}
+               <div className='flex justify-center md:flex-row flex-col'>
+                {/* Focus Parking Mark */}
+                  <CButton text={t('FocusMark')}
                    bgColor={'bg-green-500'}
                    element={<LocationMarkerIcon  className='w-10 inline-block'/>}
                    btnClick={()=>{focusMarkLocation()}}
                     />
-                  <CButton text={'I arrived parking area, Reset the parking mark'} 
+                    {/* I arrived parking area, Reset the parking mark */}
+                  <CButton text={t('ArriveMark')} 
                     bgColor={'bg-orange-600'} 
                     element={<RefreshIcon  className='w-10 inline-block'/>}
                     btnClick={()=>{resetParkMark()}}/>
                </div>
                 )
         }else{
-            return <CButton text={'Save Current Position as Parking Mark'} 
+            // Save Current Position as Parking Mark
+            return <CButton text={t('SaveMark')} 
                     bgColor={'bg-blue-600'} 
                     element={<LocationMarkerIcon  className='w-10 inline-block'/>}
                     btnClick={()=>{saveLocation()}}/>

@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import {showErrorAlert} from '../../util/sweetAlert'
 import ParkingMarkBtn from './AddParkingMarkBtn';
 import L from 'leaflet';
+import { useTranslation } from 'react-i18next';
 // import RoutingMachine from './RoutineMachine';
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -49,6 +50,7 @@ async function getCarParkMapData(city){
 
 const Map = React.memo(({posArray = defaultprops})=>{
         const [parkingArray,setParkArray] = useState([]);
+        const {t} = useTranslation();
         // const parkingMarkArray = useSelector((state) => state.CarParkReducer.carParkMarks)
         const savedMarkArray = useSelector((state) => state.CarParkReducer.saveParkMarks)
         useEffect(()=>{
@@ -69,8 +71,8 @@ const Map = React.memo(({posArray = defaultprops})=>{
                     <ZoomControl position="bottomright" />
                     <LocationMarker />
                     {/* <RoutingMachine /> */}
-                    <ParkingMarker markArray={savedMarkArray} />
-                    <CarParkingMarker markArray={parkingArray} />
+                    <ParkingMarker mapMsg={t('OpenGoogle')} markArray={savedMarkArray} />
+                    <CarParkingMarker mapMsg={t('OpenGoogle')} markArray={parkingArray} />
                     <ParkingMarkBtn />
                 </MapContainer>
             </div>

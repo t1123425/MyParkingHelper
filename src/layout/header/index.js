@@ -17,7 +17,7 @@ const  Header = () =>{
               Version: {process.env.REACT_APP_VERSION}
            </p>
            <div className='flex p-8 pt-0 pb-0 w-full justify-between items-center z-10'>
-               <div className="menuBtnBlock cursor-pointer opacity-0" onClick={() => setOpen((isOpen)=> !isOpen)}>
+               <div className="menuBtnBlock cursor-pointer" onClick={() => setOpen((isOpen)=> !isOpen)}>
                   {
                      renderIcon(isOpen)
                   }

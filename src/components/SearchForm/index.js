@@ -1,8 +1,10 @@
 import { useState} from "react"
 import { useDispatch} from 'react-redux';
 import {getCarPark} from '../../api/api_service';
-import {showErrorAlert} from '../../util/sweetAlert' 
+import {showErrorAlert} from '../../util/sweetAlert'
+import { useTranslation } from "react-i18next"
 const SearchForm = ()=>{
+    const {t} = useTranslation();
     const cityArray = [
         "Taipei",
         "Tainan",
@@ -54,10 +56,10 @@ const SearchForm = ()=>{
     
     return (
         <div className="formBlock bg-slate-100 rounded p-3">
-            <h2 className="font-bold leading-tight text-4xl">Search Parking location</h2>
-            <div className="mt-6 md:col-span-2">
+            <h3 className="font-bold leading-tight text-4xl">{t('SearchParkTitle')}</h3>
+            <div className="mt-6 md:col-span-2"> 
                 <div className="w-full">
-                    <label htmlFor="citySelect" className="form-label mt-2">Select City</label>
+                    <label htmlFor="citySelect" className="form-label mt-2">{t('SelectCity')}</label>
                     <select id="citySelect" 
                       onChange={handleSelect}
                       value={selectCity}

@@ -24,3 +24,10 @@ export const resetParkMarks = () => {
       type:'RESET_PARKMARKS'
   }
 }
+export const mapFlyControl = flyData => {
+    return {
+        type:'Fly_TO_POSITION',
+        flyStatus:flyData.flyStatus,
+        posArray:flyData.posArray
+    }
+}

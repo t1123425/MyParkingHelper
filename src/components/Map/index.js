@@ -9,6 +9,7 @@ import LocationMarker from './LocationMarker';
 import { useSelector } from 'react-redux';
 import {showErrorAlert} from '../../util/sweetAlert'
 import ParkingMarkBtn from './AddParkingMarkBtn';
+import MapFly from './MapFly';
 import L from 'leaflet';
 import { useTranslation } from 'react-i18next';
 // import RoutingMachine from './RoutineMachine';
@@ -49,18 +50,18 @@ async function getCarParkMapData(city){
 }
 
 const Map = React.memo(({posArray = defaultprops})=>{
-        const [parkingArray,setParkArray] = useState([]);
+        //const [parkingArray,setParkArray] = useState([]);
         const {t} = useTranslation();
-        // const parkingMarkArray = useSelector((state) => state.CarParkReducer.carParkMarks)
+        const parkingMarkArray = useSelector((state) => state.CarParkReducer.carParkMarks)
         const savedMarkArray = useSelector((state) => state.CarParkReducer.saveParkMarks)
-        useEffect(()=>{
-          const getTaipeiParkData = async () => {
-              const TaipeiParkData = await getCarParkMapData('Taipei');
-              setParkArray([...TaipeiParkData]);
-          }
+        // useEffect(()=>{
+        //   const getTaipeiParkData = async () => {
+        //       const TaipeiParkData = await getCarParkMapData('Taipei');
+        //       setParkArray([...TaipeiParkData]);
+        //   }
 
-          getTaipeiParkData();
-        },[])
+        //   getTaipeiParkData();
+        // },[])
         return (
             <div className="w-full h-full">
                 <MapContainer center={posArray} zoom={13} scrollWheelZoom={true} zoomControl={false} style={{height: '100vh'}}>
@@ -72,8 +73,9 @@ const Map = React.memo(({posArray = defaultprops})=>{
                     <LocationMarker />
                     {/* <RoutingMachine /> */}
                     <ParkingMarker mapMsg={t('OpenGoogle')} markArray={savedMarkArray} />
-                    <CarParkingMarker mapMsg={t('OpenGoogle')} markArray={parkingArray} />
+                    <CarParkingMarker mapMsg={t('OpenGoogle')} markArray={parkingMarkArray} />
                     <ParkingMarkBtn />
+                    <MapFly />
                 </MapContainer>
             </div>
         )

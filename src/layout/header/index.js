@@ -1,6 +1,7 @@
 import {MapIcon,MenuIcon,XIcon} from '@heroicons/react/solid'
 import Nav from '../nav'
-import { useState } from 'react'
+import { MenuStatusContext } from '../../context'
+import { useState} from 'react'
 
 function renderIcon(status){
    if(status){
@@ -9,11 +10,16 @@ function renderIcon(status){
       return  <MenuIcon className='w-10' />
     }
 }
+
 const  Header = () =>{
      const [isOpen,setOpen] = useState(false);
+     const menuToggle = {
+      isOpen,
+      setOpen
+     }
      return (
         <header className="headerContent w-full fixed top-0 left-0 bg-white shadow">
-           <p className='text-blue-600 ml-1 text-sm'>
+           <p className='text-blue-600 ml-1 text-xs text-right'>
               Version: {process.env.REACT_APP_VERSION}
            </p>
            <div className='flex p-8 pt-0 pb-0 w-full justify-between items-center z-10'>
@@ -31,7 +37,9 @@ const  Header = () =>{
                      </h1>
                </div>
            </div>
-           <Nav Isopen={isOpen}/>
+           <MenuStatusContext.Provider value={menuToggle}>
+             <Nav/>
+           </MenuStatusContext.Provider>
         </header>
      )
 }

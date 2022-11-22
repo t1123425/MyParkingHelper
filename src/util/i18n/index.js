@@ -15,7 +15,7 @@ i18next.use(initReactI18next).use(LanguageDetector).init({
                 OpenGoogle:' Open google Map For directing.',
                 ToggleLanguage:'Language Toggle',
                 SearchParkTitle:'Search Parking location',
-                SelectCity:'Select City'
+                SelectLabel:'Select Park Area'
             }
         },
         ch:{
@@ -27,7 +27,7 @@ i18next.use(initReactI18next).use(LanguageDetector).init({
                 OpenGoogle:'使用Google地圖來導航。',
                 ToggleLanguage:'切換語言',
                 SearchParkTitle:'搜尋停車位置',
-                SelectCity:'選擇城市'
+                SelectLabel:'選擇停車場'
             }
         }
     } 

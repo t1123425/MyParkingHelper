@@ -1,4 +1,4 @@
-import { useState,useEffect,useContext} from "react"
+import React,{ useState,useEffect,useContext} from "react"
 import { useDispatch,useSelector} from 'react-redux';
 import {getCarPark} from '../../api/api_service';
 import {showErrorAlert} from '../../util/sweetAlert'
@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next"
 import {LocationMarkerIcon} from '@heroicons/react/solid';
 import { MenuStatusContext } from "../../context";
 import { updateCarParkMarks,mapFlyControl } from "../../services/actions";
-// import { map } from 'leaflet';
 const SearchForm = ()=>{
     const {t} = useTranslation();
     const {setOpen} = useContext(MenuStatusContext);
@@ -34,12 +33,13 @@ const SearchForm = ()=>{
         const filtersResult =  parkingMarkArray.filter(e => e.CarParkName.includes(searchValue))
         SetResultList(() => [...filtersResult]);
     }
-    // const uMap = useMap();
     const Dispatch = useDispatch();
-    const getCityCarPark = (city) =>{
-        const data = {
+    const getCityCarPark = (city,limits) => {
+        
+        let data =  {
+            $top:limits,
             $format:'JSON'
-        } 
+          } 
         getCarPark(city,data).then((res)=>{
             //console.log('get car park',res);
             const filterCarMarkArray = res.data?.CarParks.map((e,i)=>{
@@ -61,14 +61,15 @@ const SearchForm = ()=>{
         })
     }
     const focusPark = (posArray) => {
-        //uMap.flyTo(posArray,17);
-        //L.map.flyTo(posArray,17);
+        // map control map fly
         Dispatch(mapFlyControl({flyStatus:true,posArray:posArray}))
-        // map.flyTo(posArray);
+        //after click patk position menu close
         setOpen(false)
     }
     useEffect(()=>{
-        getCityCarPark(cityArray[0]);
+        //get taipei city park cityArray[0] is Taipei
+        // the taipei parking limit is 263
+        getCityCarPark(cityArray[0],263);
     },[])
     return (
         <div className="formBlock bg-slate-100 rounded p-3">
@@ -140,4 +141,4 @@ const SearchForm = ()=>{
     )
 }
 
-export default SearchForm;
+export default React.memo(SearchForm);

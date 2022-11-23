@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18next.use(initReactI18next).use(LanguageDetector).init({
-    debug:true,
+    debug:false,
     fallbackLng:'ch',
     resources:{
         en:{
@@ -13,7 +13,7 @@ i18next.use(initReactI18next).use(LanguageDetector).init({
                 ArriveMark:'I arrived parking area, Reset the parking mark',
                 SaveMark:'Save Current Position as Parking Mark',
                 OpenGoogle:' Open google Map For directing.',
-                ToggleLanguage:'Language Toggle',
+                ToggleLanguage:'Language',
                 SearchParkTitle:'Search Parking location',
                 SelectLabel:'Select Park Area'
             }
@@ -25,7 +25,7 @@ i18next.use(initReactI18next).use(LanguageDetector).init({
                 ArriveMark:'已到達停車位，重製車位位置。',
                 SaveMark:'儲存現有座標為停車位置。',
                 OpenGoogle:'使用Google地圖來導航。',
-                ToggleLanguage:'切換語言',
+                ToggleLanguage:'語言',
                 SearchParkTitle:'搜尋停車位置',
                 SelectLabel:'選擇停車場'
             }

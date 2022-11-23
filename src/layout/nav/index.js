@@ -6,7 +6,7 @@ import { MenuStatusContext } from '../../context';
 const Nav = () =>{
     const {isOpen} = useContext(MenuStatusContext);
     return (
-        <nav className={'navMenu transition-all w-1/2 p-2 h-screen relative top-0 rounded shadow bg-slate-400 '+(isOpen?'active':'')}>
+        <nav className={'navMenu transition-all  md:w-1/2 w-full p-2 h-screen relative top-0 rounded shadow bg-slate-400 '+(isOpen?'active':'')}>
             <LangToggle />
             <SearchForm />
         </nav>

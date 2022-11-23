@@ -1,13 +1,11 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import { MapContainer, TileLayer,ZoomControl} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
-import {getCarPark} from '../../api/api_service';
 // import  twd97_to_latlng from '../../util/twd97Tolatlng';
 import CarParkingMarker from './CarPakingMarker';
 import ParkingMarker from './ParkingMarker';
 import LocationMarker from './LocationMarker';
 import { useSelector } from 'react-redux';
-import {showErrorAlert} from '../../util/sweetAlert'
 import ParkingMarkBtn from './AddParkingMarkBtn';
 import MapFly from './MapFly';
 import L from 'leaflet';
@@ -23,45 +21,11 @@ L.Icon.Default.mergeOptions({
 //center of taipei
 const defaultprops = [25.03746, 121.564558];
 
-async function getCarParkMapData(city){
-  // the taipei parking limit is 263
-  let data =  {
-    $top:263,
-    $format:'JSON'
-  }
-  try {
-    return getCarPark(city,data).then(res => 
-      res.data?.CarParks.map((e)=>{
-        return {
-          posArray:[e.CarParkPosition.PositionLat,e.CarParkPosition.PositionLon],
-          Address:e.Address,
-          CarParkName:e.CarParkName.Zh_tw,
-          Description:e.Description,
-          FareDescription:e.FareDescription
-        }
-      })
-    )
-    
-  }catch(error){
-    console.log('err',error);
-    showErrorAlert('API Error');
-    return [];
-  }
-}
 
 const Map = React.memo(({posArray = defaultprops})=>{
-        //const [parkingArray,setParkArray] = useState([]);
         const {t} = useTranslation();
         const parkingMarkArray = useSelector((state) => state.CarParkReducer.carParkMarks)
         const savedMarkArray = useSelector((state) => state.CarParkReducer.saveParkMarks)
-        // useEffect(()=>{
-        //   const getTaipeiParkData = async () => {
-        //       const TaipeiParkData = await getCarParkMapData('Taipei');
-        //       setParkArray([...TaipeiParkData]);
-        //   }
-
-        //   getTaipeiParkData();
-        // },[])
         return (
             <div className="w-full h-full">
                 <MapContainer center={posArray} zoom={13} scrollWheelZoom={true} zoomControl={false} style={{height: '100vh'}}>

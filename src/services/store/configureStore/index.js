@@ -5,6 +5,7 @@ import allreducers from '../../reducers';
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist:['LocationReducer','MapReducer']
   }
 
   const persistedReducer = persistReducer(persistConfig, allreducers)

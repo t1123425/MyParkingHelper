@@ -11,8 +11,6 @@ const MapFly = () => {
             uMap.flyTo(mapControl.posArray,17);
             dispatch({type:'Reset_POSITION'})
         }
-        //console.log('useMAP',uMap);
-        // console.log('mapControl',mapControl);
     },[mapControl])
     return null;
 }
